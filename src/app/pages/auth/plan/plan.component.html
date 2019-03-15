@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="plan-header">
+      <div class="plan-head-row">
+        <div class="plan-head-col">
+          <ng-container *ngIf="selectedPlan == null">
+            <h1>Order Your Future</h1>
+            <h2>Customize your Package Now</h2>
+          </ng-container>
+          <ng-container *ngIf="selectedPlan != null">
+            <h1>Fill Out Payment Details</h1>
+            <h2>You have selected the {{selectedPlan.name}} Package</h2>
+          </ng-container>
+        </div>
+        <div class="plan-head-col">
+          <span [ngClass]="{'active': selectedPlan == null}">1</span>
+          <span [ngClass]="{'active': selectedPlan != null}">2</span>
+          <span>3</span>
+        </div>
+      </div>
+    </div>
+    <app-offers *ngIf="selectedPlan == null" (plan)="register($event)"></app-offers>
+    <div *ngIf="selectedPlan != null && hasSignedUp == false" class="form-slide">
+      <div class="form-head-row">
+        <span class="back">
+          <img src="assets/img/back.png" alt="icon" />
+          <span>
+            Back
+          </span>
+        </span>
+      </div>
+      <div class="form-area">
+        <h3>Billing Information</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-one-col">
+              <label>NAME</label>
+              <input type="text" [(ngModel)]="user.name" name="name" class="active" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-three-col">
+              <label>ADDRESS</label>
+              <input type="text" [(ngModel)]="user.address" name="address" [ngClass]="{'active': user.address != ''}" />
+            </div>
+            <div class="form-three-col">
+              <label>UNIT #</label>
+              <input type="text" [(ngModel)]="user.unit" name="unit" [ngClass]="{'active': user.unit != ''}" />
+            </div>
+            <div class="form-three-col">
+              <label>ZIPCODE</label>
+              <input type="text" [(ngModel)]="user.zipcode" name="zip" [ngClass]="{'active': user.zipcode != ''}" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-two-col">
+              <label>EMAIL</label>
+              <input type="text" name="email" [(ngModel)]="user.email" [ngClass]="{'active': user.email != ''}" />
+            </div>
+            <div class="form-two-col">
+              <label>PHONE #</label>
+              <input type="number" [(ngModel)]="user.phoneNo" name="phone" [ngClass]="{'active': user.phoneNo != ''}" />
+            </div>
+          </div>
+          <span class="blue-btn" (click)="signUp()">NEXT</span>
+        </form>
+      </div>
+    </div>
+    <div *ngIf="hasSignedUp == true" class="form-slide">
+      <div class="form-head-row">
+        <span class="back">
+          <img src="assets/img/back.png" alt="icon" />
+          <span>
+            Back
+          </span>
+        </span>
+      </div>
+      <div class="form-area">
+        <h3>Payment Information</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-one-col">
+              <label>NAME ON CARD</label>
+              <input type="text" [(ngModel)]="billing.name" name="name" class="active" />
+            </div>
+          </div>
+          <div class="form-one-col">
+            <div class="form-three-col">
+              <label>Card Number</label>
+              <input type="number" [(ngModel)]="billing.number" name="unit"
+                [ngClass]="{'active': billing.number != ''}" />
+            </div>
+            <div class="form-three-col">
+              <label>Expiration Date</label>
+              <input type="date" [(ngModel)]="billing.expiry" name="zip" [ngClass]="{'active': billing.date != ''}" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-two-col">
+              <label>CVC</label>
+              <input type="number" name="cvc" [(ngModel)]="billing.cvc" [ngClass]="{'active': billing.cvc != ''}" />
+            </div>
+          </div>
+          <span class="blue-btn" (click)="billMe()">NEXT</span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="form-slide">
+      <div class="form-head-row">
+        <span class="back">
+          <img src="assets/img/back.png" alt="icon" />
+          <span>
+            Back
+          </span>
+        </span>
+      </div>
+      <div class="form-area">
+        <h3>Login</h3>
+        <form>
+          <div class="form-row">
+            <div class="form-three-col">
+              <label>Email</label>
+              <input type="text" [(ngModel)]="user.email" name="address" [ngClass]="{'active': user.email != ''}" />
+            </div>
+            <div class="form-three-col">
+              <label>Password</label>
+              <input type="password" [(ngModel)]="user.password" name="unit"
+                [ngClass]="{'active': user.password != ''}" />
+            </div>
+          </div>
+          <span class="blue-btn" (click)="login()">Login</span>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

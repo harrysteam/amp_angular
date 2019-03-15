@@ -1,0 +1,103 @@
+@import '../../../../theme/variables';
+.container {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 90px);
+    height: 100%;
+    .wrapper {
+        margin: 15px 45px;
+        width: auto;
+        .plan-head-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+            .plan-head-col {
+                h1 {
+                    margin: 0;
+                    font-size: 50px;
+                    color: #000;
+                }
+                h2 {
+                    margin: 0;
+                    font-size: 30px;
+                    color: rgb(74, 74, 74);
+                }
+                span {
+                    background: rgb(216, 216, 216);
+                    color: #fff;
+                    padding: 10px;
+                    margin: 0 25px;
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    text-align: center;
+                    &.active {
+                        background: rgb(24, 193, 240);
+                    }
+                }
+            }
+        }
+        .form-slide {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin-top: 25px;
+            padding: 50px;
+            .form-area {
+                max-width: 700px;
+                margin: 25px auto;
+                h3 {
+                    color: rgb(74, 74, 74)
+                }
+                form {
+                    .form-row {
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 25px 0;
+                        .form-one-col {
+                            width: 100%;
+                        }
+                        .form-two-col {
+                            width: 49%;
+                        }
+                        .form-three-col {
+                            width: 32%;
+                        }
+                        label {
+                            display: block;
+                            color: rgb(155, 155, 155);
+                        }
+                        input {
+                            width: 100%;
+                            border: 1px solid transparent;
+                            background: rgb(241, 244, 244);
+                            padding: 15px 10px;
+                            border-radius: 7px;
+                            outline: none;
+                        }
+                        input {
+                            &.active {
+                                background: #fff;
+                                border: 1px solid rgb(238, 238, 238);
+                                box-shadow: 0 3px 10px rgba(192, 192, 192, 0.5);
+                            }
+                        }
+                    }
+                    .blue-btn {
+                        background: #39d4ff;
+                        padding: 15px 50px;
+                        font-size: 18px;
+                        color: #fff;
+                        border-radius: 5px;
+                        text-transform: uppercase;
+                        width: 250px;
+                        text-align: center;
+                        display: block;
+                        margin: 50px auto 25px;
+                    }
+                }
+            }
+        }
+    }
+}
