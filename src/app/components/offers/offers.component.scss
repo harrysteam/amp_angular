@@ -50,15 +50,6 @@
                         border: none;
                         margin-top: -25px;
                         position: relative;
-                        &::before {
-                            content: "";
-                            background: url(../../../assets/img/popular.png) no-repeat 0 0/contain;
-                            position: absolute;
-                            width: 150px;
-                            padding-bottom: 23%;
-                            right: -11px;
-                            top: -13px;
-                        }
                         h3 {
                             margin: 20px 0 25px;
                         }
@@ -72,10 +63,20 @@
                         }
                     }
                     &:nth-child(3) {
+                        position: relative;
                         background: rgb(57, 212, 255);
                         border-top-right-radius: 15px;
                         color: #fff;
                         border: none;
+                        &::before {
+                            content: "";
+                            background: url(../../../assets/img/popular.png) no-repeat 0 0/contain;
+                            position: absolute;
+                            width: 125px;
+                            height: 100px;
+                            right: -5px;
+                            top: -13px;
+                        }
                         .big-heading {
                             font-size: 52px;
                             display: block;

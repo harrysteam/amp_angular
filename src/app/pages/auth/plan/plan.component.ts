@@ -35,14 +35,13 @@ export class PlanComponent implements OnInit {
   }
 
   signUp() {
-    if (this.user.name == '' || this.user.address == '' || this.user.unit == '' || this.user.zipcode == '' || this.user.email == '' || this.user.phoneNo == '') {
+    if (this.user.name == '' || this.user.address == '' || this.user.zipcode == '' || this.user.email == '' || this.user.phoneNo == '') {
       alert("Please don't leave any field blank.")
       return;
     }
     var params = {
       name: this.user.name,
       address: this.user.address,
-      unit: this.user.unit,
       zip: this.user.zipcode,
       email: this.user.email,
       phone: this.user.phoneNo,

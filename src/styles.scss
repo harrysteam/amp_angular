@@ -5,4 +5,14 @@ body {
     background: $theme;
     padding: 0;
     margin: 0;
+    font-family: 'ProximaNova-Regular'
+}
+
+$font-path: "./assets/fonts";
+@font-face {
+    font-family: 'ProximaNova-Regular';
+    src: url("#{$font-path}/ProximaNova-Regular.eot");
+    src: url("#{$font-path}/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"), // url("#{$font-path}/ProximaNova-Regular.woff") format("woff"),
+    url("#{$font-path}/ProximaNova-Regular.ttf") format("truetype"),
+    url("#{$font-path}/ProximaNova-Regular.svg") format("svg");
 }

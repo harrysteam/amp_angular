@@ -2,7 +2,7 @@
 .container {
     display: inline-block;
     width: 90px;
-    height: -webkit-fill-available;
+    height: auto;
     background: $primary;
     overflow: hidden;
     box-shadow: 0px 0px 10px 0px $shadow;

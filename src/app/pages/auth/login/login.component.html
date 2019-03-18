@@ -10,20 +10,41 @@
         </span>
       </div>
       <div class="form-area">
-        <h3>Login</h3>
+        <h3>Login to your dashboard!</h3>
         <form>
+
           <div class="form-row">
-            <div class="form-three-col">
-              <label>Email</label>
-              <input type="text" [(ngModel)]="user.email" name="address" [ngClass]="{'active': user.email != ''}" />
+            <div class="form-two-col">
+              <div class="cus-inp-row">
+                <label>Email</label>
+                <input type="text" [(ngModel)]="user.email" name="address" [ngClass]="{'active': user.email != ''}" />
+              </div>
+              <div class="cus-inp-row">
+                <label>Password</label>
+                <input type="password" [(ngModel)]="user.password" name="unit"
+                  [ngClass]="{'active': user.password != ''}" />
+              </div>
+              <div class="cus-check-row">
+                <input type="checkbox" id="cus-check" />
+                <label for="cus-check"><span></span>REMEMBER ME</label>
+              </div>
             </div>
-            <div class="form-three-col">
-              <label>Password</label>
-              <input type="password" [(ngModel)]="user.password" name="unit"
-                [ngClass]="{'active': user.password != ''}" />
+            <div class="form-two-col">
+              <div class="">
+                <div class="cus-btn fb-btn">
+                  FACEBOOK LOGIN
+                </div>
+                <div class="cus-btn google-btn">
+                  GOOGLE LOGIN
+                </div>
+                <!-- <div class="cus-btn inp-btn">
+                  <a href="#">INTUiT LOGIN</a>
+                </div> -->
+              </div>
             </div>
           </div>
-          <span class="blue-btn" (click)="login()">Login</span>
+          <span class="blue-btn" (click)="login()">NEXT</span>
+          <p class="forgot-text">Forgot Your Password</p>
         </form>
       </div>
     </div>
