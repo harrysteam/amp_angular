@@ -1,3 +1,4 @@
+@import '../../../theme/variables';
 .plan-slide {
     .plan-sections {
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -43,16 +44,11 @@
                         margin: 10px 0;
                     }
                     &:nth-child(2) {
-                        background: rgb(24, 193, 240);
+                        background: $blueTheme;
                         border-top-left-radius: 15px;
-                        border-top-right-radius: 15px;
                         color: #fff;
                         border: none;
-                        margin-top: -25px;
                         position: relative;
-                        h3 {
-                            margin: 20px 0 25px;
-                        }
                         .big-heading {
                             font-size: 52px;
                             display: block;
@@ -64,10 +60,15 @@
                     }
                     &:nth-child(3) {
                         position: relative;
-                        background: rgb(57, 212, 255);
+                        background: $darkBlue;
+                        border-top-left-radius: 15px;
                         border-top-right-radius: 15px;
                         color: #fff;
                         border: none;
+                        margin-top: -25px;
+                        h3 {
+                            margin: 20px 0 25px;
+                        }
                         &::before {
                             content: "";
                             background: url(../../../assets/img/popular.png) no-repeat 0 0/contain;

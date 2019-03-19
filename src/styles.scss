@@ -8,7 +8,7 @@ body {
     font-family: 'ProximaNova-Regular'
 }
 
-$font-path: "./assets/fonts";
+$font-path: "/assets/fonts";
 @font-face {
     font-family: 'ProximaNova-Regular';
     src: url("#{$font-path}/ProximaNova-Regular.eot");

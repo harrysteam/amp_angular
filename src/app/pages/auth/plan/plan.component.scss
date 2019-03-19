@@ -80,6 +80,16 @@
             @media (max-width: 767px) {
                 padding: 15px;
             }
+            .form-head-row {
+                .back {
+                    img {
+                        vertical-align: middle;
+                    }
+                    span {
+                        vertical-align: middle;
+                    }
+                }
+            }
             .form-area {
                 max-width: 700px;
                 margin: 25px auto;
@@ -114,7 +124,7 @@
                             color: rgb(155, 155, 155);
                         }
                         input {
-                            width: 100%;
+                            width: -webkit-fill-available;
                             border: 1px solid transparent;
                             background: rgb(241, 244, 244);
                             padding: 15px 10px;
