@@ -4,7 +4,7 @@ import { PlanComponent } from './plan/plan.component';
 import { RouterModule } from '@angular/router';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { FormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
+import { MaterialModule } from 'src/app/components/material/material.module';
 
 @NgModule({
   declarations: [PlanComponent],
@@ -17,7 +17,8 @@ import { LoginComponent } from './login/login.component';
         component: PlanComponent
       }
     ]),
-    CommonModule
+    CommonModule,
+    MaterialModule
   ]
 })
 export class AuthModule { }

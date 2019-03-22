@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import './theme/variables';
+//importing For Angular material
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 body {
     background: $theme;
     padding: 0;

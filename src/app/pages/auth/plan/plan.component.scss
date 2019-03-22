@@ -161,13 +161,28 @@
                         a {
                             width: 120px;
                             height: 3px;
-                            background: rgb(216, 216, 216);
+                            background: $greyTheme;
                             display: inline-block;
                             margin: 0 5px;
                             &.active {
                                 background: rgb(96, 185, 251)
                             }
                         }
+                    }
+                    .mat-tab-group {
+                        align-items: center;
+                    }
+                    .mat-tab-label {
+                        height: 5px;
+                        background: $greyTheme;
+                        margin-right: 5px;
+                    }
+                    .mat-tab-header {
+                        border-top: none;
+                    }
+                    .mat-ink-bar {
+                        background: $blueTheme;
+                        height: 5px;
                     }
                 }
             }

@@ -27,7 +27,9 @@ export class OffersComponent implements OnInit {
   }
 
   selectPlan(plan) {
-    this.selectedPlan.emit(plan);
+    setTimeout(() => {
+      this.selectedPlan.emit(plan);
+    }, 300);
   }
 
 }

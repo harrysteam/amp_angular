@@ -11,16 +11,23 @@ import { AuthService } from './services/auth/auth.service';
 import { CredentialService } from './services/credentials/credential.service';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material';
+import { MaterialModule } from './components/material/material.module';
+import { HomeComponent } from './pages/dash/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ComponentsModule,
+    MaterialModule,
+    BrowserAnimationsModule,
     HttpModule,
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

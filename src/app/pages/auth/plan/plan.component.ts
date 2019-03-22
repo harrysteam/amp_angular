@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plan',
   templateUrl: './plan.component.html',
-  styleUrls: ['./plan.component.scss']
+  styleUrls: ['./plan.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PlanComponent implements OnInit {
   selectedPlan: any = null;
   hasSignedUp: boolean = false;
+  selectedTab: number = 0;
   public user = {
     name: '',
     address: '',
@@ -34,6 +36,16 @@ export class PlanComponent implements OnInit {
     this.selectedPlan = plan;
   }
 
+  previous() {
+    if (this.hasSignedUp == true) {
+      this.selectedTab = 0;
+      this.hasSignedUp = false;
+    } else if (this.selectedPlan != null) {
+      this.selectedTab = 0;
+      this.selectedPlan = null;
+    }
+  }
+
   signUp() {
     if (this.user.name == '' || this.user.address == '' || this.user.zipcode == '' || this.user.email == '' || this.user.phoneNo == '') {
       alert("Please don't leave any field blank.")
@@ -49,6 +61,7 @@ export class PlanComponent implements OnInit {
     }
     this.auth.signUp(params).subscribe((user) => {
       this.hasSignedUp = true;
+      this.selectedTab = 1;
       console.log(user);
     }, (error) => {
       console.log(error);
@@ -70,7 +83,7 @@ export class PlanComponent implements OnInit {
     }
     this.auth.pay(params).subscribe((success) => {
       alert('Payment recieved, Please check your email.');
-      this.router.navigate(['/login'])
+      this.router.navigate(['/home'])
     }, (error) => {
 
     })

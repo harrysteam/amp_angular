@@ -20,9 +20,9 @@
       </div>
     </div>
     <app-offers *ngIf="selectedPlan == null" (plan)="register($event)"></app-offers>
-    <div *ngIf="selectedPlan != null && hasSignedUp == false" class="form-slide">
+    <div class="form-slide" *ngIf="selectedPlan != null">
       <div class="form-head-row">
-        <span class="back">
+        <span class="back" (click)="previous()" mat-button>
           <img src="assets/img/back.png" alt="icon" />
           <span>
             Back
@@ -30,83 +30,77 @@
         </span>
       </div>
       <div class="form-area">
-        <h3>Complete Billing Information</h3>
+        <h3 *ngIf="selectedPlan != null && hasSignedUp == false">Complete Billing Information</h3>
+        <h3 *ngIf="hasSignedUp == true">Payment Information</h3>
         <form>
-          <div class="form-row">
-            <div class="form-one-col">
-              <label>NAME</label>
-              <input type="text" [(ngModel)]="user.name" name="name" class="active" />
+          <ng-container *ngIf="selectedPlan != null && hasSignedUp == false">
+            <div class="form-row">
+              <div class="form-one-col">
+                <label>NAME</label>
+                <input type="text" [(ngModel)]="user.name" name="name" class="active" />
+              </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-two-col">
-              <label>ADDRESS</label>
-              <input type="text" [(ngModel)]="user.address" name="address" [ngClass]="{'active': user.address != ''}" />
+            <div class="form-row">
+              <div class="form-two-col">
+                <label>ADDRESS</label>
+                <input type="text" [(ngModel)]="user.address" name="address"
+                  [ngClass]="{'active': user.address != ''}" />
+              </div>
+              <!-- <div class="form-three-col">
+                    <label>UNIT #</label>
+                    <input type="text" [(ngModel)]="user.unit" name="unit" [ngClass]="{'active': user.unit != ''}" />
+                  </div> -->
+              <div class="form-two-col">
+                <label>ZIPCODE</label>
+                <input type="text" [(ngModel)]="user.zipcode" name="zip" [ngClass]="{'active': user.zipcode != ''}" />
+              </div>
             </div>
-            <!-- <div class="form-three-col">
-              <label>UNIT #</label>
-              <input type="text" [(ngModel)]="user.unit" name="unit" [ngClass]="{'active': user.unit != ''}" />
-            </div> -->
-            <div class="form-two-col">
-              <label>ZIPCODE</label>
-              <input type="text" [(ngModel)]="user.zipcode" name="zip" [ngClass]="{'active': user.zipcode != ''}" />
+            <div class="form-row">
+              <div class="form-two-col">
+                <label>EMAIL</label>
+                <input type="text" name="email" [(ngModel)]="user.email" [ngClass]="{'active': user.email != ''}" />
+              </div>
+              <div class="form-two-col">
+                <label>PHONE #</label>
+                <input type="number" [(ngModel)]="user.phoneNo" name="phone"
+                  [ngClass]="{'active': user.phoneNo != ''}" />
+              </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-two-col">
-              <label>EMAIL</label>
-              <input type="text" name="email" [(ngModel)]="user.email" [ngClass]="{'active': user.email != ''}" />
+            <button class="blue-btn" mat-raised-button (click)="signUp()">NEXT</button>
+          </ng-container>
+          <ng-container *ngIf="hasSignedUp == true">
+            <div class="form-row">
+              <div class="form-one-col">
+                <label>NAME ON CARD</label>
+                <input type="text" [(ngModel)]="billing.name" name="name" class="active" />
+              </div>
             </div>
-            <div class="form-two-col">
-              <label>PHONE #</label>
-              <input type="number" [(ngModel)]="user.phoneNo" name="phone" [ngClass]="{'active': user.phoneNo != ''}" />
+            <div class="form-row">
+              <div class="form-one-col">
+                <label>Card Number</label>
+                <input type="number" [(ngModel)]="billing.number" name="unit"
+                  [ngClass]="{'active': billing.number != ''}" />
+              </div>
             </div>
-          </div>
-          <span class="blue-btn" (click)="signUp()">NEXT</span>
-          <div class="blue-bars">
-            <a href="#" class="active"></a>
-            <a href="#"></a>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div *ngIf="hasSignedUp == true" class="form-slide">
-      <div class="form-head-row">
-        <span class="back">
-          <img src="assets/img/back.png" alt="icon" />
-          <span>
-            Back
-          </span>
-        </span>
-      </div>
-      <div class="form-area">
-        <h3>Payment Information</h3>
-        <form>
-          <div class="form-row">
-            <div class="form-one-col">
-              <label>NAME ON CARD</label>
-              <input type="text" [(ngModel)]="billing.name" name="name" class="active" />
+            <div class="form-row">
+              <div class="form-two-col">
+                <label>Expiration Date</label>
+                <input type="date" [(ngModel)]="billing.expiry" name="zip" [ngClass]="{'active': billing.date != ''}" />
+              </div>
+              <div class="form-two-col">
+                <label>CVC</label>
+                <input type="number" name="cvc" [(ngModel)]="billing.cvc"
+                  [ngClass]="{'active': (billing.cvc != '' && billing.cvc != null)}" />
+              </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="form-one-col">
-              <label>Card Number</label>
-              <input type="number" [(ngModel)]="billing.number" name="unit"
-                [ngClass]="{'active': billing.number != ''}" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-two-col">
-              <label>Expiration Date</label>
-              <input type="date" [(ngModel)]="billing.expiry" name="zip" [ngClass]="{'active': billing.date != ''}" />
-            </div>
-            <div class="form-two-col">
-              <label>CVC</label>
-              <input type="number" name="cvc" [(ngModel)]="billing.cvc"
-                [ngClass]="{'active': (billing.cvc != '' && billing.cvc != null)}" />
-            </div>
-          </div>
-          <span class="blue-btn" (click)="billMe()">NEXT</span>
+            <button class="blue-btn" mat-raised-button (click)="billMe()">NEXT</button>
+          </ng-container>
+          <mat-tab-group headerPosition="below" [selectedIndex]="selectedTab">
+            <mat-tab [disabled]="true">
+            </mat-tab>
+            <mat-tab [disabled]="true">
+            </mat-tab>
+          </mat-tab-group>
         </form>
       </div>
     </div>
