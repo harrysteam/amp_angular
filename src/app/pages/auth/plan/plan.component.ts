@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
-import { AlertComponent } from 'src/app/components/modals/alert/alert.component';
+import { AuxService } from 'src/app/auxilaries/aux.service';
 
 @Component({
   selector: 'app-plan',
@@ -41,7 +40,7 @@ export class PlanComponent implements OnInit {
     expiry: false,
   }
   constructor(public auth: AuthService,
-    public dialog: MatDialog,
+    public aux: AuxService,
     public router: Router) { }
 
   ngOnInit() {
@@ -49,12 +48,6 @@ export class PlanComponent implements OnInit {
 
   register(plan) {
     this.selectedPlan = plan;
-  }
-
-  showMessage(message) {
-    const dialogRef = this.dialog.open(AlertComponent, {
-      data: { message: message, title: 'Error Message' }
-    });
   }
 
   changeInFields(field) {
@@ -115,7 +108,7 @@ export class PlanComponent implements OnInit {
         check = true;
     }
     if (check) {
-      this.showMessage("Please don't leave any field blank.");
+      this.aux.showAlert("Please don't leave any field blank.", "ERROR");
       return;
     }
     var params = {
@@ -129,9 +122,8 @@ export class PlanComponent implements OnInit {
     this.auth.signUp(params).subscribe((user) => {
       this.hasSignedUp = true;
       this.selectedTab = 1;
-      console.log(user);
     }, (error) => {
-      console.log(error);
+      this.aux.errorResponse(error);
     })
   }
 
@@ -157,7 +149,7 @@ export class PlanComponent implements OnInit {
         check = true;
     }
     if (check) {
-      this.showMessage("Please don't leave any field blank.");
+      this.aux.showAlert("Please don't leave any field blank.", "ERROR");
       return;
     }
     var params = {
@@ -168,10 +160,10 @@ export class PlanComponent implements OnInit {
       card_cvc: this.billing.cvc
     }
     this.auth.pay(params).subscribe((success) => {
-      alert('Payment recieved, Please check your email.');
+      this.aux.showAlert('Payment recieved, Please check your email.', "Successful Transaction!");
       this.router.navigate(['/home'])
     }, (error) => {
-
+      this.aux.errorResponse(error);
     })
   }
 

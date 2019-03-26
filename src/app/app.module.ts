@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material';
 import { MaterialModule } from './components/material/material.module';
 import { HomeComponent } from './pages/dash/home/home.component';
+import { AuxService } from './auxilaries/aux.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { HomeComponent } from './pages/dash/home/home.component';
   providers: [
     CredentialService,
     AuthService,
+    AuxService,
     {
       provide: Http,
       useFactory: HttpFactory,

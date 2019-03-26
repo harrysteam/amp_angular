@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="wrapper">
+  <div class="GlobalFormWrapper">
     <div class="form-slide">
       <div class="form-head-row">
-        <span class="back">
+        <span class="back" (click)="goBack()">
           <img src="assets/img/back.png" alt="icon" />
           <span>
             Back
@@ -12,17 +12,15 @@
       <div class="form-area">
         <h3>Login to your dashboard!</h3>
         <form>
-
           <div class="form-row">
             <div class="form-two-col">
               <div class="cus-inp-row">
                 <label>Email</label>
-                <input type="text" [(ngModel)]="user.email" name="address" [ngClass]="{'active': user.email != ''}" />
+                <input type="text" [(ngModel)]="user.email" (ngModelChange)="changeInFields('email')" name="address" [ngClass]="{'active': user.email != '','error':usrVld.usr == true}" />
               </div>
               <div class="cus-inp-row">
                 <label>Password</label>
-                <input type="password" [(ngModel)]="user.password" name="unit"
-                  [ngClass]="{'active': user.password != ''}" />
+                <input type="password" [(ngModel)]="user.password" (ngModelChange)="changeInFields('pass')" name="unit" [ngClass]="{'active': user.password != '','error':usrVld.pass == true}" />
               </div>
               <div class="cus-check-row">
                 <input type="checkbox" id="cus-check" />
@@ -31,19 +29,19 @@
             </div>
             <div class="form-two-col">
               <div class="">
-                <div class="cus-btn fb-btn">
+                <button class="cus-btn fb-btn" mat-raised-button>
                   FACEBOOK LOGIN
-                </div>
-                <div class="cus-btn google-btn">
+                </button>
+                <button class="cus-btn google-btn" mat-raised-button>
                   GOOGLE LOGIN
-                </div>
+                </button>
                 <!-- <div class="cus-btn inp-btn">
                   <a href="#">INTUiT LOGIN</a>
                 </div> -->
               </div>
             </div>
           </div>
-          <span class="blue-btn" (click)="login()">NEXT</span>
+          <button class="blue-btn" (click)="login()" mat-raised-button>NEXT</button>
           <p class="forgot-text">Forgot Your Password</p>
         </form>
       </div>
